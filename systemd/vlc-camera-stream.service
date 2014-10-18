@@ -1,0 +1,14 @@
+[Unit]
+Description=VLC stream from RPi camera
+After=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+EnvironmentFile=/etc/conf.d/vlc-camera-stream.conf
+User=nobody
+ExecStart=/usr/bin/vlc-camera-stream.sh start
+ExecStop=/usr/bin/vlc-camera-stream.sh stop
+
+[Install]
+WantedBy=multi-user.target
